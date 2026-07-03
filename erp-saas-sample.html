@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERP / SaaS Documentation Sample — Heather Miller</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="wide">
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../work.html">Selected Work</a><span class="sep">/</span><span class="current">ERP/SaaS Sample</span></div>
+    <nav class="mainnav">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../work.html" class="active">Selected Work</a>
+      <a href="../resume.html">Résumé</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+  <span class="badge task">Task-based Sample</span>
+  <h1 class="pagetitle">ERP / SaaS Documentation Sample</h1>
+  <p class="dek">A representative, sanitized sample built around a fictional module ("Meridian ERP — Vendor Payments") to demonstrate the content types I produce weekly in a real production environment: feature overview, configuration, procedure, troubleshooting, and release notes.</p>
+
+  <div class="callout">
+    <strong>Why this sample looks the way it does:</strong> the underlying product and company names are fictionalized because my actual production documentation is proprietary. The structure, depth, and writing approach are unchanged from real work.
+  </div>
+
+  <div class="section">
+    <span class="badge concept">Concept</span>
+    <h2>Feature Overview: Vendor Payment Batching</h2>
+    <p>Vendor Payment Batching lets accounts payable teams group approved invoices into a single scheduled payment run, rather than releasing payments one at a time. A batch can combine invoices across vendors, payment methods, and due dates, and it respects any approval thresholds configured for the company.</p>
+    <p>Use this feature when your team processes a high volume of vendor invoices on a recurring schedule — for example, a weekly Friday payment run — and wants a single point of review before funds are released.</p>
+  </div>
+
+  <div class="section">
+    <span class="badge task">Task</span>
+    <h2>Configuring Batch Approval Thresholds</h2>
+    <p>Before your team can use batching, an administrator sets the dollar threshold that determines whether a batch requires a second approver.</p>
+    <ol class="tight">
+      <li>Go to <strong>Settings &gt; Payments &gt; Approval Rules</strong>.</li>
+      <li>Select <strong>Add Threshold Rule</strong>.</li>
+      <li>Enter the dollar amount above which a batch requires a second approval.</li>
+      <li>Choose whether the rule applies to all vendors or a specific vendor group.</li>
+      <li>Select <strong>Save</strong>. The rule takes effect on the next batch created after saving; it does not apply retroactively to open batches.</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <span class="badge task">Task</span>
+    <h2>Creating and Releasing a Payment Batch</h2>
+    <ol class="tight">
+      <li>Go to <strong>Payments &gt; Batches</strong> and select <strong>New Batch</strong>.</li>
+      <li>Filter invoices by due date, vendor, or payment method, then select the invoices to include.</li>
+      <li>Select <strong>Review Batch</strong> to see the total amount and invoice count before proceeding.</li>
+      <li>Select <strong>Submit for Approval</strong>. If the batch total exceeds your configured threshold, it routes to a second approver automatically.</li>
+      <li>Once approved, select <strong>Release Batch</strong> to send the batch to your payment processor.</li>
+    </ol>
+    <div class="callout">A released batch cannot be edited. To remove an invoice after release, void the individual payment from <strong>Payments &gt; History</strong> instead.</div>
+  </div>
+
+  <div class="section">
+    <span class="badge reference">Troubleshooting</span>
+    <h2>Batch Stuck in "Pending Approval"</h2>
+    <table class="spec">
+      <tr><th>Cause</th><th>Resolution</th></tr>
+      <tr><td>Assigned approver is inactive or has left the approval group</td><td>Go to <strong>Settings &gt; Payments &gt; Approval Rules</strong> and reassign the approver group, then resubmit the batch.</td></tr>
+      <tr><td>Batch total was edited after initial submission</td><td>Any change to batch total resets approval status. Resubmit the batch to restart the approval cycle.</td></tr>
+      <tr><td>Approver hasn't received notification</td><td>Confirm the approver's notification preferences under their user profile; batches don't resend notifications automatically.</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <span class="badge reference">Release Notes</span>
+    <h2>Release Notes — Vendor Payment Batching</h2>
+    <table class="spec">
+      <tr><th>Version</th><th>Change</th></tr>
+      <tr><td>4.12</td><td>Added support for mixed payment methods within a single batch.</td></tr>
+      <tr><td>4.9</td><td>Approval threshold rules can now target specific vendor groups instead of only company-wide amounts.</td></tr>
+      <tr><td>4.6</td><td>Fixed an issue where voided invoices could remain visible in a released batch's summary view.</td></tr>
+    </table>
+    <p>In production, I write and publish notes like these weekly, cross-referencing engineering tickets and confirming behavior with QA before each release goes out to the knowledge base.</p>
+  </div>
+
+  <div class="topic-footer">
+    <span><strong>Content types demonstrated:</strong> Concept, Task, Reference</span>
+    <span><strong>Applies to:</strong> Fictionalized ERP module</span>
+    <span><strong>Format:</strong> HTML</span>
+  </div>
+</main>
+
+<footer class="sitefooter">
+  <a href="mailto:miller1218@outlook.com">Email</a>·
+  <a href="https://www.linkedin.com/in/heather-m-8a455a157/" target="_blank" rel="noopener">LinkedIn</a>·
+  <a href="../resume.html">Résumé</a>
+</footer>
+
+</body>
+</html>
