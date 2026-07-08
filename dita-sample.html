@@ -6,7 +6,7 @@
 <title>DITA Structured-Authoring Project — Heather Miller</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="wide">
 
 <div class="topbar">
   <div class="topbar-inner">
@@ -22,13 +22,105 @@
 </div>
 
 <main>
-  <span class="badge reference">In Progress</span>
+  <span class="badge reference">Structured-Authoring Sample</span>
   <h1 class="pagetitle">DITA Structured-Authoring Project</h1>
-  <p class="dek">This sample is under construction.</p>
+  <p class="dek">A small DITA map built from concept, task, and reference topics, using content reuse and conditional processing to publish the same source to both HTML and PDF.</p>
+
   <div class="callout">
-    Coming soon: a small DITA map built from concept, task, and reference topics, using conditional content and publishing to both HTML and PDF output — drawing on my structured-authoring work at Epiroc.
+    <strong>Why this sample looks the way it does:</strong> the underlying product and company names are fictionalized because my actual structured-authoring work is proprietary. The map structure, topic types, and reuse techniques below reflect real practice from my work at Epiroc Drilling Solutions.
   </div>
-  <p><a href="work.html">← Back to Selected Work</a></p>
+
+  <div class="section">
+    <span class="badge reference">Architecture</span>
+    <h2>The DITA Map</h2>
+    <p>The map file is the table of contents for a structured-authoring project. It doesn't contain content itself. It references individual topic files and organizes them into a sequence, so the same topics can be reordered or reused in a different map without editing the topics.</p>
+    <span class="code-label">hydraulic-maintenance.ditamap</span>
+    <pre class="codeblock"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd"&gt;
+&lt;map title="Atlas 900 Series - Hydraulic System Maintenance"&gt;
+  &lt;topicref href="concepts/hydraulic-system-overview.dita" /&gt;
+  &lt;topicref href="tasks/replace-hydraulic-filter.dita" /&gt;
+  &lt;topicref href="tasks/bleed-hydraulic-lines.dita" /&gt;
+  &lt;topicref href="reference/hydraulic-fluid-specs.dita" /&gt;
+&lt;/map&gt;</code></pre>
+  </div>
+
+  <div class="section">
+    <span class="badge concept">Concept</span>
+    <h2>Concept Topic</h2>
+    <p>Concept topics explain what something is before a task topic explains how to work on it. Keeping this separate from procedural content means the same explanation can be linked from multiple tasks instead of repeated in each one.</p>
+    <span class="code-label">concepts/hydraulic-system-overview.dita</span>
+    <pre class="codeblock"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd"&gt;
+&lt;concept id="hydraulic-overview"&gt;
+  &lt;title&gt;Hydraulic System Overview&lt;/title&gt;
+  &lt;conbody&gt;
+    &lt;p&gt;The hydraulic system powers the rig's rotation, feed, and clamping
+    functions using a closed-loop fluid circuit rated for continuous
+    duty operation.&lt;/p&gt;
+  &lt;/conbody&gt;
+&lt;/concept&gt;</code></pre>
+  </div>
+
+  <div class="section">
+    <span class="badge task">Task</span>
+    <h2>Task Topic</h2>
+    <p>Task topics are written as a numbered sequence of actions, with each step limited to one action so a technician can follow along without reinterpreting the instruction.</p>
+    <span class="code-label">tasks/replace-hydraulic-filter.dita</span>
+    <pre class="codeblock"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd"&gt;
+&lt;task id="replace-filter"&gt;
+  &lt;title&gt;Replace the Hydraulic Filter&lt;/title&gt;
+  &lt;taskbody&gt;
+    &lt;steps&gt;
+      &lt;step&gt;&lt;cmd&gt;Relieve system pressure before opening the filter housing.&lt;/cmd&gt;&lt;/step&gt;
+      &lt;step&gt;&lt;cmd&gt;Remove the housing cap and extract the used filter element.&lt;/cmd&gt;&lt;/step&gt;
+      &lt;step&gt;&lt;cmd&gt;Insert the replacement element and reseal the housing.&lt;/cmd&gt;&lt;/step&gt;
+    &lt;/steps&gt;
+  &lt;/taskbody&gt;
+&lt;/task&gt;</code></pre>
+  </div>
+
+  <div class="section">
+    <span class="badge reference">Reference</span>
+    <h2>Reference Topic</h2>
+    <p>Reference topics hold lookup information, specs, parameters, or settings, formatted as tables so a reader can scan for a value instead of reading prose to find it.</p>
+    <span class="code-label">reference/hydraulic-fluid-specs.dita</span>
+    <pre class="codeblock"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd"&gt;
+&lt;reference id="fluid-specs"&gt;
+  &lt;title&gt;Hydraulic Fluid Specifications&lt;/title&gt;
+  &lt;refbody&gt;
+    &lt;simpletable&gt;
+      &lt;sthead&gt;&lt;stentry&gt;Property&lt;/stentry&gt;&lt;stentry&gt;Specification&lt;/stentry&gt;&lt;/sthead&gt;
+      &lt;strow&gt;&lt;stentry&gt;Viscosity grade&lt;/stentry&gt;&lt;stentry&gt;ISO VG 46&lt;/stentry&gt;&lt;/strow&gt;
+      &lt;strow&gt;&lt;stentry&gt;Operating temperature range&lt;/stentry&gt;&lt;stentry&gt;-20°C to 80°C&lt;/stentry&gt;&lt;/strow&gt;
+    &lt;/simpletable&gt;
+  &lt;/refbody&gt;
+&lt;/reference&gt;</code></pre>
+  </div>
+
+  <div class="section">
+    <span class="badge reference">Reuse &amp; Conditions</span>
+    <h2>Content Reuse and Conditional Processing</h2>
+    <p>A shared warning stored once can be pulled into any task that needs it using a conref, so updating the warning in one place updates it everywhere it's referenced.</p>
+    <pre class="codeblock"><code>&lt;caution conref="shared-content.dita#safety-warnings/pressure-relief-warning"/&gt;</code></pre>
+    <p>Profiling attributes let one source topic serve more than one audience. The build process includes or excludes content based on the attribute, so field technicians and factory technicians can read the same topic with different instructions where the procedure actually differs.</p>
+    <pre class="codeblock"><code>&lt;p audience="fieldTech"&gt;Torque the housing cap to 35 Nm.&lt;/p&gt;
+&lt;p audience="factoryTech"&gt;Torque the housing cap to 40 Nm per the rebuild specification.&lt;/p&gt;</code></pre>
+  </div>
+
+  <div class="section">
+    <span class="badge overview">Publishing</span>
+    <h2>Publishing to HTML and PDF</h2>
+    <p>The map and topics above are the single source of content. The same files publish to an HTML help system for field technicians using tablets, and to a PDF technical manual for printed reference in the shop. Content only needs to be written and maintained once, and both outputs stay consistent with each other because they're generated from the same source rather than kept as separate documents.</p>
+  </div>
+
+  <div class="topic-footer">
+    <span><strong>Content types demonstrated:</strong> Concept, Task, Reference</span>
+    <span><strong>Applies to:</strong> Fictionalized industrial equipment module</span>
+    <span><strong>Format:</strong> DITA/XML</span>
+  </div>
 </main>
 
 <footer class="sitefooter">
