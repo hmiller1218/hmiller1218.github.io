@@ -30,7 +30,14 @@
     <strong>Why this sample looks the way it does:</strong> the underlying product and company names are fictionalized because my actual production documentation is proprietary. The structure, depth, and writing approach are unchanged from real work.
   </div>
 
- <div class="section">
+  <div class="section">
+    <span class="badge concept">Concept</span>
+    <h2>Feature Overview: Vendor Payment Batching</h2>
+    <p>Vendor Payment Batching lets accounts payable teams group approved invoices into a single scheduled payment run, rather than releasing payments one at a time. A batch can combine invoices across vendors, payment methods, and due dates, and it respects any approval thresholds configured for the company.</p>
+    <p>Use this feature when your team processes a high volume of vendor invoices on a recurring schedule — for example, a weekly Friday payment run — and wants a single point of review before funds are released.</p>
+  </div>
+
+  <div class="section">
     <span class="badge task">Task</span>
     <h2>Configure Batch Approval Thresholds</h2>
     <p>Before your team can use batching, an administrator sets the dollar threshold that determines whether a batch requires a second approver. Go to <strong>Settings &gt; Payments &gt; Approval Rules</strong> and select <strong>Add Threshold Rule</strong>, then enter the dollar amount above which a batch requires a second approval. Rules can apply company-wide or be scoped to a specific vendor group.</p>
@@ -40,19 +47,6 @@
   <div class="section">
     <span class="badge task">Task</span>
     <h2>Create and Release a Payment Batch</h2>
-    <ol class="tight">
-      <li>Go to <strong>Payments &gt; Batches</strong> and select <strong>New Batch</strong>.</li>
-      <li>Filter invoices by due date, vendor, or payment method, then select the invoices to include.</li>
-      <li>Select <strong>Review Batch</strong> to see the total amount and invoice count before proceeding.</li>
-      <li>Select <strong>Submit for Approval</strong>. If the batch total exceeds your configured threshold, it routes to a second approver automatically.</li>
-      <li>Once approved, select <strong>Release Batch</strong> to send the batch to your payment processor.</li>
-    </ol>
-    <div class="callout">A released batch cannot be edited. To remove an invoice after release, void the individual payment from <strong>Payments &gt; History</strong> instead.</div>
-  </div>
-
-  <div class="section">
-    <span class="badge task">Task</span>
-    <h2>Creating and Releasing a Payment Batch</h2>
     <ol class="tight">
       <li>Go to <strong>Payments &gt; Batches</strong> and select <strong>New Batch</strong>.</li>
       <li>Filter invoices by due date, vendor, or payment method, then select the invoices to include.</li>
