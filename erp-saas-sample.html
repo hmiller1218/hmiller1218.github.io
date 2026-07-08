@@ -1,4 +1,4 @@
-html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -97,16 +97,17 @@ html<!DOCTYPE html>
 
   <div class="section">
     <span class="badge reference">Localization</span>
-    <h2>Approved Terminology for Latin American Markets</h2>
-    <p>When documentation is translated, an approved-terms list keeps key product terminology consistent across every topic and every translator. Without it, the same feature can end up with two or three different names across the knowledge base, which is confusing for users and expensive to fix later.</p>
+    <h2>Writing Translation-Ready Source Content</h2>
+    <p>Good localization starts before a translator ever sees the content. Writing choices made in the source English determine how cleanly a document translates, how much a translation vendor needs to guess at intent, and whether the same concept ends up with two different names in another language.</p>
     <table class="spec">
-      <tr><th>English Term</th><th>Approved Term (Latin American Spanish)</th><th>Why It's Standardized</th></tr>
-      <tr><td>Batch</td><td>Lote</td><td>Keeps every module referring to grouped transactions the same way, instead of mixing in "grupo" or "conjunto" as inconsistent synonyms.</td></tr>
-      <tr><td>Approval threshold</td><td>Umbral de aprobación</td><td>Distinguishes this configurable limit from unrelated fields elsewhere in the platform that are translated as "límite."</td></tr>
-      <tr><td>Release (a batch)</td><td>Liberar</td><td>Matches the term accounting teams already use for releasing a payment, rather than a literal translation few users would recognize.</td></tr>
-      <tr><td>Void</td><td>Anular</td><td>Reserved for reversing a completed transaction, kept separate from "cancelar," which refers to stopping a pending action before it completes.</td></tr>
+      <tr><th>Practice</th><th>Example</th><th>Why It Matters</th></tr>
+      <tr><td>One approved term per concept</td><td>Always "batch," never a mix of "batch" and "group" for the same feature</td><td>Prevents a translator from reasonably creating two different translated terms for what should be a single concept.</td></tr>
+      <tr><td>Mark non-translatable strings</td><td>Product names and UI element labels flagged as do-not-translate</td><td>Keeps brand names and interface labels consistent across every language version instead of being translated inconsistently by different vendors.</td></tr>
+      <tr><td>Avoid idioms and culturally specific phrasing</td><td>Write "resolve the issue" instead of "get to the bottom of it"</td><td>Idioms rarely translate literally and can confuse or mislead a reader in another language.</td></tr>
+      <tr><td>Write shorter, simpler sentences</td><td>One action per step instead of compound sentences</td><td>Translated text commonly runs 20 to 30 percent longer than the English source; shorter source sentences help prevent translated UI text from overflowing.</td></tr>
+      <tr><td>Flag space-constrained UI text</td><td>Note character limits next to any string tied to a button or label</td><td>Prevents a translated label from being truncated or breaking the layout once it's longer than the original English.</td></tr>
     </table>
-    <p>I maintained this list in partnership with translation vendors, updating it as new terminology was introduced each release so translators were never working from an outdated source.</p>
+    <p>I owned these standards for the source content and partnered with translation vendors who handled the linguistic work itself, so localization stayed accurate and consistent release after release.</p>
   </div>
 
   <div class="topic-footer">
