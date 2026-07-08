@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -24,7 +24,7 @@
 <main>
   <span class="badge task">Task-based Sample</span>
   <h1 class="pagetitle">ERP / SaaS Documentation Sample</h1>
-  <p class="dek">A representative, sanitized sample built around a fictional module ("Meridian ERP — Vendor Payments") to demonstrate the content types I produce weekly in a real production environment: feature overview, configuration, procedure, troubleshooting, and release notes.</p>
+  <p class="dek">A representative, sanitized sample built around a fictional module ("Meridian ERP — Vendor Payments") to demonstrate the content types I produce weekly in a real production environment: feature overview, configuration, procedure, troubleshooting, release notes, and localization.</p>
 
   <div class="callout">
     <strong>Why this sample looks the way it does:</strong> the underlying product and company names are fictionalized because my actual production documentation is proprietary. The structure, depth, and writing approach are unchanged from real work.
@@ -46,7 +46,7 @@
       <li>Select <strong>Add Threshold Rule</strong>.</li>
       <li>Enter the dollar amount above which a batch requires a second approval.</li>
       <li>Choose whether the rule applies to all vendors or a specific vendor group.</li>
-      <li>Select <strong>Save</strong>. The rule takes effect on the next batch created after saving.</li>
+      <li>Select <strong>Save</strong>. The rule takes effect on the next batch created after saving; it does not apply retroactively to open batches.</li>
     </ol>
   </div>
 
@@ -54,8 +54,7 @@
     <span class="badge task">Task</span>
     <h2>Create and Release a Payment Batch</h2>
     <ol class="tight">
-      <li>Go to <strong>Payments &gt; Batches</strong>.</li>
-      <li>Select <strong>New Batch</strong>.</li>
+      <li>Go to <strong>Payments &gt; Batches</strong> and select <strong>New Batch</strong>.</li>
       <li>Filter invoices by due date, vendor, or payment method, then select the invoices to include.</li>
       <li>Select <strong>Review Batch</strong> to see the total amount and invoice count before proceeding.</li>
       <li>Select <strong>Submit for Approval</strong>. If the batch total exceeds your configured threshold, it routes to a second approver automatically.</li>
@@ -82,8 +81,8 @@
     <h3>New Features &amp; Updates</h3>
     <table class="spec">
       <tr><th>Version</th><th>Change</th></tr>
-      <tr><td>4.12</td><td>Added support for mixed payment methods — ACH, check, and wire — within a single batch, so AP teams no longer need to split one payment run into multiple batches by vendor payment preference.</td></tr>
-      <tr><td>4.9</td><td>Approval threshold rules can now target a specific vendor group instead of only company-wide amounts, letting Finance apply tighter review to higher-risk vendors without adding extra steps to routine payments.</td></tr>
+      <tr><td>4.12</td><td>Added support for mixed payment methods — ACH, check, and wire — within a single batch, instead of requiring a separate batch per payment method. <strong>Why it matters:</strong> AP teams no longer split one payment run into multiple batches just to accommodate different vendor payment preferences, which cuts batch-creation time on high-volume days.</td></tr>
+      <tr><td>4.9</td><td>Approval threshold rules can now target a specific vendor group instead of applying one threshold company-wide. <strong>Why it matters:</strong> Finance can require tighter approval on higher-risk vendor groups without adding unnecessary review steps to routine, low-risk payments.</td></tr>
     </table>
 
     <h3>Bug Fixes</h3>
@@ -94,6 +93,20 @@
     </table>
 
     <p>In production, I write and publish notes like these weekly, cross-referencing engineering tickets and confirming behavior with QA before each release goes out to the knowledge base.</p>
+  </div>
+
+  <div class="section">
+    <span class="badge reference">Localization</span>
+    <h2>Approved Terminology for Latin American Markets</h2>
+    <p>When documentation is translated, an approved-terms list keeps key product terminology consistent across every topic and every translator. Without it, the same feature can end up with two or three different names across the knowledge base, which is confusing for users and expensive to fix later.</p>
+    <table class="spec">
+      <tr><th>English Term</th><th>Approved Term (Latin American Spanish)</th><th>Why It's Standardized</th></tr>
+      <tr><td>Batch</td><td>Lote</td><td>Keeps every module referring to grouped transactions the same way, instead of mixing in "grupo" or "conjunto" as inconsistent synonyms.</td></tr>
+      <tr><td>Approval threshold</td><td>Umbral de aprobación</td><td>Distinguishes this configurable limit from unrelated fields elsewhere in the platform that are translated as "límite."</td></tr>
+      <tr><td>Release (a batch)</td><td>Liberar</td><td>Matches the term accounting teams already use for releasing a payment, rather than a literal translation few users would recognize.</td></tr>
+      <tr><td>Void</td><td>Anular</td><td>Reserved for reversing a completed transaction, kept separate from "cancelar," which refers to stopping a pending action before it completes.</td></tr>
+    </table>
+    <p>I maintained this list in partnership with translation vendors, updating it as new terminology was introduced each release so translators were never working from an outdated source.</p>
   </div>
 
   <div class="topic-footer">
