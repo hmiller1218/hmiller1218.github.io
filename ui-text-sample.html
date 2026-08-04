@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI Text &amp; Content Design — Heather Miller</title>
+<meta name="description" content="UI text and content design case study: before/after interface copy for a fictional SaaS grading platform, covering error messages, empty states, onboarding, and confirmation dialogs.">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Scoped additions for this page — merge into style.css later if you want
+     these available site-wide. Uses your teal/ink brand colors directly so
+     this renders correctly even if variable names differ in your main sheet. */
+  .badge.content {
+    background-color: #e6f2f2;
+    color: #1A7A7A;
+    border: 1px solid #1A7A7A;
+  }
+  .principles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 2rem;
+    margin: 1.25rem 0 2rem;
+    padding: 0;
+    list-style: none;
+  }
+  .principles li {
+    padding-left: 1.4rem;
+    position: relative;
+    line-height: 1.5;
+  }
+  .principles li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #1A7A7A;
+    font-weight: bold;
+  }
+  .ui-example {
+    border: 1px solid #d8dfe0;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  .ui-example-label {
+    background: #f4f6f6;
+    padding: 0.6rem 1rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #16262B;
+    border-bottom: 1px solid #d8dfe0;
+  }
+  .ui-example-body {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+  }
+  .ba-block {
+    padding: 0.75rem 0.9rem;
+    border-radius: 4px;
+    font-family: Georgia, "Source Serif 4", serif;
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+  .ba-block.before {
+    background: #fbeeee;
+    border-left: 3px solid #b5504a;
+  }
+  .ba-block.after {
+    background: #e6f2f2;
+    border-left: 3px solid #1A7A7A;
+  }
+  .ba-tag {
+    display: block;
+    font-family: Arial, Inter, sans-serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    opacity: 0.75;
+  }
+  .rationale {
+    font-size: 0.92rem;
+    color: #444;
+    line-height: 1.5;
+    margin: 0;
+  }
+  .rationale strong {
+    color: #16262B;
+  }
+  @media (max-width: 640px) {
+    .before-after, .principles { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="sitename">Heather Miller</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="work.html" class="active">Selected Work</a>
+      <a href="resume.html">Résumé</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a> / <a href="work.html">Selected Work</a> / UI Text &amp; Content Design
+</div>
+
+<main>
+  <span class="badge content">Content Design</span>
+  <h1 class="pagetitle">UI Text &amp; Content Design</h1>
+  <p class="dek">Before/after interface copy for GradePath, a fictional grading and assessment platform — error messages, empty states, onboarding, and confirmation dialogs.</p>
+
+  <p>GradePath is a fictional product, built so I can show UI text decisions without exposing proprietary interface copy from past employers. The scenarios below — file upload errors, empty gradebooks, first-time setup, grade submission — reflect the kind of content design work I've done in production for real SaaS platforms and industrial software, reframed here around an education tool.</p>
+
+  <h2>Content principles</h2>
+  <ul class="principles">
+    <li><strong>Lead with the fix</strong>, not the failure. Tell people what to do next, not just what went wrong.</li>
+    <li><strong>Match the stakes.</strong> A typo warning and a "submit final grades" warning shouldn't sound the same.</li>
+    <li><strong>Name specifics.</strong> Course names, file types, character counts — vague copy creates support tickets, not fewer.</li>
+    <li><strong>Assume good faith.</strong> Never word copy as if the user did something wrong on purpose.</li>
+  </ul>
+
+  <h2>Examples</h2>
+
+  <div class="ui-example">
+    <div class="ui-example-label">Error message — failed file upload</div>
+    <div class="ui-example-body">
+      <div class="before-after">
+        <div class="ba-block before">
+          <span class="ba-tag">Before</span>
+          Error: Upload failed. File type not supported.
+        </div>
+        <div class="ba-block after">
+          <span class="ba-tag">After</span>
+          That file didn't upload — GradePath accepts PDF, DOCX, and JPG rubrics. Try converting the file, or upload a different one.
+        </div>
+      </div>
+      <p class="rationale"><strong>Why:</strong> The original blames the action without offering a path forward. The rewrite names the fix immediately and lists accepted formats, so the instructor doesn't have to guess or open a support ticket.</p>
+    </div>
+  </div>
+
+  <div class="ui-example">
+    <div class="ui-example-label">Empty state — no submissions yet</div>
+    <div class="ui-example-body">
+      <div class="before-after">
+        <div class="ba-block before">
+          <span class="ba-tag">Before</span>
+          No data available.
+        </div>
+        <div class="ba-block after">
+          <span class="ba-tag">After</span>
+          No submissions yet. Once students turn in their work, you'll see it listed here — sorted by due date.
+        </div>
+      </div>
+      <p class="rationale"><strong>Why:</strong> "No data available" reads like a system error, not a normal state. An empty state should reassure the user that nothing is broken and tell them what to expect next.</p>
+    </div>
+  </div>
+
+  <div class="ui-example">
+    <div class="ui-example-label">Onboarding — first-time course setup</div>
+    <div class="ui-example-body">
+      <div class="before-after">
+        <div class="ba-block before">
+          <span class="ba-tag">Before</span>
+          Please configure your grading scale before continuing.
+        </div>
+        <div class="ba-block after">
+          <span class="ba-tag">After</span>
+          Set up your grading scale — you can always change it later. Most instructors start with a standard A–F scale.
+        </div>
+      </div>
+      <p class="rationale"><strong>Why:</strong> "Please configure" is a command with no context. The rewrite lowers first-time friction by normalizing the decision and offering a default, which matters most during onboarding, when users are still deciding whether to trust the product.</p>
+    </div>
+  </div>
+
+  <div class="ui-example">
+    <div class="ui-example-label">Confirmation dialog — submitting final grades</div>
+    <div class="ui-example-body">
+      <div class="before-after">
+        <div class="ba-block before">
+          <span class="ba-tag">Before</span>
+          Are you sure? This action cannot be undone.
+        </div>
+        <div class="ba-block after">
+          <span class="ba-tag">After</span>
+          Submit final grades for Fall 2026 – Biology 101? Grades will be visible to students immediately and can't be edited after submission.
+        </div>
+      </div>
+      <p class="rationale"><strong>Why:</strong> Generic confirmation dialogs create anxiety without giving enough information to decide. Naming the specific course and the specific consequence lets the instructor confirm with full information instead of just trusting a warning.</p>
+    </div>
+  </div>
+
+  <div class="ui-example">
+    <div class="ui-example-label">Inline validation — form field</div>
+    <div class="ui-example-body">
+      <div class="before-after">
+        <div class="ba-block before">
+          <span class="ba-tag">Before</span>
+          Invalid input.
+        </div>
+        <div class="ba-block after">
+          <span class="ba-tag">After</span>
+          Assignment names need to be 60 characters or fewer — try shortening it by 12 characters.
+        </div>
+      </div>
+      <p class="rationale"><strong>Why:</strong> Telling someone their input is "invalid" without saying why turns the form into a guessing game. Naming the constraint and the exact gap turns a dead end into a next step.</p>
+    </div>
+  </div>
+
+  <div class="topic-footer">
+    <span><strong>Topic type:</strong> Content Design</span>
+  </div>
+</main>
+
+<footer class="sitefooter">
+  <a href="mailto:miller1218@outlook.com">Email</a>·
+  <a href="https://www.linkedin.com/in/heather-m-8a455a157/" target="_blank" rel="noopener">LinkedIn</a>·
+  <a href="resume.html">Résumé</a>
+</footer>
+
+</body>
+</html>
